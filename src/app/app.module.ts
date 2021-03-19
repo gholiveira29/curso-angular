@@ -5,10 +5,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { BasicCreateComponent } from './basic-create/basic-create.component';
+import { OperatorsComponent } from './operators/operators.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BasicCreateComponent,
+    OperatorsComponent
   ],
   imports: [
     BrowserModule,
