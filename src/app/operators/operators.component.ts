@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { from , fromEvent,  interval, Observable, Subscription } from 'rxjs';
-import { delay, filter, first, last, map, take, tap } from 'rxjs/operators';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatRipple } from '@angular/material/core';
+import { from , fromEvent,  interval, Observable, Subject, Subscription, timer } from 'rxjs';
+import { debounceTime, delay, filter, first, last, map, take, takeUntil, takeWhile, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-operators',
@@ -8,6 +9,10 @@ import { delay, filter, first, last, map, take, tap } from 'rxjs/operators';
   styleUrls: ['./operators.component.css']
 })
 export class OperatorsComponent implements OnInit {
+
+  @ViewChild(MatRipple) ripple: MatRipple;
+
+  searchInput: string = '';
 
   constructor() { }
 
@@ -85,6 +90,55 @@ export class OperatorsComponent implements OnInit {
       }
     },200)
 
+  }
+
+debounceTimeClick() {
+  fromEvent(document, 'click')
+  .pipe(
+    tap((e) => console.log("click")),
+    debounceTime(1000)
+  )
+  .subscribe((e: MouseEvent) => {
+    this.lautRipple();
+  })
+  }
+
+  lautRipple() {
+    const rippleRef = this.ripple.launch({
+      persistent: true,
+      centered: true
+    });
+    rippleRef.fadeOut;
+  }
+
+  searchEntry$ : Subject<string> = new Subject<string>();
+  searchBy_UsingDebounce(event) {
+    this.searchEntry$.next(this.searchInput);
+  }
+
+  debounceTimeSearchClick() {
+    this.searchEntry$
+    .pipe(
+      debounceTime(1000)
+    )
+    .subscribe((e) => console.log(e))
+  }
+
+  takeWhilwClick() {
+    interval(500)
+    .pipe(
+      takeWhile((value, index) => (value <= 5))
+    )
+    .subscribe((e) => console.log('takeWhile', e))
+  }
+
+  takeUntilClick() {
+    let dudeTime$ = timer(5000);
+    interval(500)
+    .pipe(
+      takeUntil(dudeTime$)
+    )
+    .subscribe((e) => console.log('takeWhile', e))
   }
 
 }

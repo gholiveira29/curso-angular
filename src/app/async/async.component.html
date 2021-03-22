@@ -1,0 +1,28 @@
+<div fxFill fxlayout="colum" fxlayoutAling="center start">
+    <mat-card>
+        <mat-card-title>Select the optinos bellow</mat-card-title>
+        <mat-card-content>
+            <mat-selection-list>
+                <mat-list-option *ngFor="let o of options$ |async">{{o}}</mat-list-option>
+            </mat-selection-list>
+        </mat-card-content>
+        <mat-card-actions>
+            <!-- <div *ngIf="user$|async; else loaddingUser1">
+                <p>Name: {{(user$|async)?.name}}</p>
+                <p>Login: {{(user$|async)?.login}}</p>
+            </div>
+            <ng-template #loaddingUser1>
+                <mat-spinner mode="indeterminate"></mat-spinner>
+            </ng-template> -->
+
+            <div *ngIf="user$|async as user; else loaddingUser2">
+                <p>Name: {{user.name}}</p>
+                <p>Login: {{user.login}}</p>
+            </div>
+            <ng-template #loaddingUser2>
+                <mat-spinner mode="indeterminate"></mat-spinner>
+            </ng-template>
+            
+        </mat-card-actions>
+    </mat-card>
+</div>

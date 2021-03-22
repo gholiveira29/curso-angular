@@ -7,12 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { BasicCreateComponent } from './basic-create/basic-create.component';
 import { OperatorsComponent } from './operators/operators.component';
+import { AsyncComponent } from './async/async.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BasicCreateComponent,
-    OperatorsComponent
+    OperatorsComponent,
+    AsyncComponent
   ],
   imports: [
     BrowserModule,
