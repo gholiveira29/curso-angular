@@ -8,13 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { BasicCreateComponent } from './basic-create/basic-create.component';
 import { OperatorsComponent } from './operators/operators.component';
 import { AsyncComponent } from './async/async.component';
+import { ErrorHandlingComponent } from './error-handling/error-handling.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BasicCreateComponent,
     OperatorsComponent,
-    AsyncComponent
+    AsyncComponent,
+    ErrorHandlingComponent
   ],
   imports: [
     BrowserModule,

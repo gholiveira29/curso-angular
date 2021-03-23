@@ -6,6 +6,8 @@
       <mat-radio-button value="operators">Operators</mat-radio-button>
       <br>
       <mat-radio-button value="async">Templates / Async</mat-radio-button>
+      <br>
+      <mat-radio-button value="error">Erro</mat-radio-button>
     </mat-radio-group>
   </div>
 
@@ -14,6 +16,7 @@
         <app-basic-create *ngSwitchCase="'basic-creation'"></app-basic-create>
         <app-operators *ngSwitchCase="'operators'"></app-operators>
         <app-async *ngSwitchCase="'async'"></app-async>
+        <app-error-handling *ngSwitchCase="'error'"></app-error-handling>
       </ng-container>
   </div> 
 </div>
