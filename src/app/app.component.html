@@ -8,15 +8,18 @@
       <mat-radio-button value="async">Templates / Async</mat-radio-button>
       <br>
       <mat-radio-button value="error">Erro</mat-radio-button>
+      <br>
+      <mat-radio-button value="drag">Drag And Drop</mat-radio-button>
     </mat-radio-group>
   </div>
 
   <div fxFlex="70" fxLayout="column" fxLayoutAlign="center start">
       <ng-container [ngSwitch]="option">
-        <app-basic-create *ngSwitchCase="'basic-creation'"></app-basic-create>
-        <app-operators *ngSwitchCase="'operators'"></app-operators>
-        <app-async *ngSwitchCase="'async'"></app-async>
-        <app-error-handling *ngSwitchCase="'error'"></app-error-handling>
+        <app-basic-create *ngSwitchCase="'basic-creation'" fxFill></app-basic-create>
+        <app-operators *ngSwitchCase="'operators'" fxFill></app-operators>
+        <app-async *ngSwitchCase="'async'" fxFill></app-async>
+        <app-error-handling *ngSwitchCase="'error'" fxFill></app-error-handling>
+        <app-drag-and-drop *ngSwitchCase="'drag'" fxFill></app-drag-and-drop>
       </ng-container>
   </div> 
 </div>
