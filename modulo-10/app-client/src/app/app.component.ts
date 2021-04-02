@@ -13,6 +13,9 @@ export class AppComponent {
   title = 'app-client';
   products$: Observable<Product[]>;
   productsErr: Product[];
+  productsLoading: Product[];
+  bloading: boolean = false;
+  productsId: Product[];
 
   constructor(
     private productService: ProductsService,
@@ -47,6 +50,50 @@ export class AppComponent {
   }
 
   ErrorRequestOk() {
+    this.productService.getProductsDelay()
+    .subscribe((res) => {
+      this.productsErr = res;
 
+      let config = new MatSnackBarConfig();
+      config.duration = 3000;
+      config.panelClass = ['snack_ok'];
+        this.snackBar.open('Products successfuly loade!!', '', config);
+      
+    },
+      (err) => {
+        
+      }
+    )
+  }
+
+  RequestLoading() {
+    this.bloading = true
+    this.productService.getProductsDelay()
+    .subscribe((res) => {
+      this.productsLoading = res;
+      this.bloading = false;
+      
+    },
+      (err) => {
+        this.bloading = false;
+      }
+    )
+  }
+
+  getProductsIds() {
+    this.productService.getProductsIds()
+    .subscribe((ids) => {
+      this.productsId = ids.map(id => ({_id: id, name: '', department: '', price: 0}))
+    })
+  }
+
+  loadName(id: string) {
+    this.productService.getProductName(id)
+    .subscribe((name) => {
+      let index = this.productsId.findIndex(p=>p._id===id);
+      if(index >= 0) {
+        this.productsId[index].name = name;
+      }
+    })
   }
 }
