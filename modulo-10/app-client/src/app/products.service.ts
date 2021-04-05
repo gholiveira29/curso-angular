@@ -32,4 +32,12 @@ export class ProductsService {
     return this.http.get(`${this.url}products/name/${id}`,
     {responseType: "text"});
   }
+
+  saveProduct(p: Product): Observable<Product> {
+    return this.http.post<Product>(`${this.url}products`, p)
+  }
+
+  deleteProduct(p: Product){
+    return this.http.delete(`${this.url}products/${p._id}`)
+  }
 }

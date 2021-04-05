@@ -16,6 +16,8 @@ export class AppComponent {
   productsLoading: Product[];
   bloading: boolean = false;
   productsId: Product[];
+  newlyProducts: Product[] = [];
+  prodsToDelete: Product[];
 
   constructor(
     private productService: ProductsService,
@@ -95,5 +97,48 @@ export class AppComponent {
         this.productsId[index].name = name;
       }
     })
+  }
+
+  saveProduct(name: string, department: string, price: number) {
+    let p = {name, department, price};
+    this.productService.saveProduct(p)
+      .subscribe((res) => {
+        this.newlyProducts.push(res)
+        let config = new MatSnackBarConfig();
+        config.duration = 3000;
+        config.panelClass = ['snack_ok'];
+          this.snackBar.open('Products successfuly loade!!', '', config);
+      },
+      (err) => {
+        let config = new MatSnackBarConfig();
+          config.duration = 3000;
+          config.panelClass = ['snack_err'];
+          if(err.status == 0) {
+            this.snackBar.open('Could not connect to the server', '', config);
+          } else {
+
+            this.snackBar.open(err.error.msg, '', config);
+          }
+      }
+      );
+  }
+
+  deleteProduct(p: Product) {
+    this.productService.deleteProduct(p)
+      .subscribe((res) => {
+        let i = this.prodsToDelete.findIndex(prod=>p._id == prod._id);
+        if(i>=0) {
+          this.prodsToDelete.splice(i, 1);
+        }
+      }, (err) => {
+        console.log(err)
+      });
+  }
+
+  loadProductsToDelete() {
+    this.productService.getProduts()
+      .subscribe((res) => {
+        this.prodsToDelete = res
+      });
   }
 }
