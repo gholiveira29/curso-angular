@@ -1,4 +1,6 @@
+import { DailogEditProdComponent } from './dailog-edit-prod/dailog-edit-prod.component';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { Product } from './product.model';
@@ -18,10 +20,12 @@ export class AppComponent {
   productsId: Product[];
   newlyProducts: Product[] = [];
   prodsToDelete: Product[];
+  prodsToEdit: Product[];
 
   constructor(
     private productService: ProductsService,
     private snackBar: MatSnackBar,
+    private dialog: MatDialog
     ) {}
 
   ngOnInit(): void {
@@ -139,6 +143,32 @@ export class AppComponent {
     this.productService.getProduts()
       .subscribe((res) => {
         this.prodsToDelete = res
+      });
+  }
+
+  loadProductsToEdit() {
+    this.productService.getProduts()
+    .subscribe((res) => this.prodsToEdit = res);
+  }
+
+  editProduct(p: Product) {
+    let newProd: Product = {...p};
+    let dailogRef = this.dialog.open(DailogEditProdComponent, {width: '400px', data: newProd});
+    dailogRef.afterClosed()
+      .subscribe((res) => {
+        if(res) {
+          this.productService.editProduct(res)
+            .subscribe((res) => {
+              let i = this.prodsToEdit.findIndex(prod=>p._id == prod._id);
+              if(i >= 0) {
+                this.prodsToEdit[i] = res;
+              }
+            },
+            (err) => {
+              console.log(err)
+            }
+            )
+        }
       });
   }
 }

@@ -31,7 +31,7 @@
 
   <mat-card fxFlex="20"  class="mat-elevation-z8">
     <mat-card-header>
-      <mat-card-title>SHTTP GET / Error handling</mat-card-title>
+      <mat-card-title>HTTP GET / Error handling</mat-card-title>
     </mat-card-header>
     <mat-card-content>
     <ul *ngIf="productsErr">
@@ -55,7 +55,7 @@
 
   <mat-card fxFlex="20"  class="mat-elevation-z8">
     <mat-card-header>
-      <mat-card-title>SHTTP GET / Loading</mat-card-title>
+      <mat-card-title>HTTP GET / Loading</mat-card-title>
     </mat-card-header>
     <mat-card-content>
     <ul *ngIf="productsLoading">
@@ -163,6 +163,31 @@
   </mat-card>
 
 
+  <mat-card fxFlex="20"  class="mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>HTTP Pacth Request</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let product of prodsToEdit">
+          <mat-icon mat-list-icon>shop</mat-icon>
+          <h4 mat-line>Name: {{product.name}}</h4>
+          <p mat-line>Department: {{product.department}}</p>
+          <p mat-line>Price: {{product.price | currency: '$'}}</p>
+          <button mat-icon-button color="accent" (click)="editProduct(product)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="loadProductsToEdit()">
+        <mat-icon>swap_vert</mat-icon> Load products
+      </button>
+    </mat-card-actions>
+    <mat-card-footer>	
+    </mat-card-footer>
+  </mat-card>
 
 
 

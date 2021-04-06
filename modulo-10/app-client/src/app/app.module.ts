@@ -6,10 +6,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { DailogEditProdComponent } from './dailog-edit-prod/dailog-edit-prod.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DailogEditProdComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DailogEditProdComponent
+  ]
 })
 export class AppModule { }
