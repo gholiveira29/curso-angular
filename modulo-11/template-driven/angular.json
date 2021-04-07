@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "2b84318a-2daa-4486-b5e7-c0807bda1e7d"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "rxjs": {
+    "template-driven": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/rxjs",
+            "outputPath": "dist/template-driven",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -40,7 +43,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -63,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "rxjs:build"
+            "browserTarget": "template-driven:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "rxjs:build:production"
+              "browserTarget": "template-driven:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "rxjs:build"
+            "browserTarget": "template-driven:build"
           }
         },
         "test": {
@@ -112,19 +114,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "rxjs:serve"
+            "devServerTarget": "template-driven:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "rxjs:serve:production"
+              "devServerTarget": "template-driven:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "rxjs",
-  "cli": {
-    "analytics": "655b6939-fc73-4c0f-a326-c7f7f0f21063"
-  }
+  "defaultProject": "template-driven"
 }
