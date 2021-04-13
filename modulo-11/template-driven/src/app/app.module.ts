@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
+import { FormNativeValidatiomComponent } from './form-native-validatiom/form-native-validatiom.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemplateDrivenFormComponent
+    TemplateDrivenFormComponent,
+    FormNativeValidatiomComponent
   ],
   imports: [
     BrowserModule,

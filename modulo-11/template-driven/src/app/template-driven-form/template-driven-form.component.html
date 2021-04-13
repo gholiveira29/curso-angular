@@ -9,27 +9,27 @@
 
             <mat-card-content fxLayout="column" fxLayoutAlign="stretch">
 
-                <form fxLayout="column" fxLayoutAlign="start stretch">
+                <form fxLayout="column" fxLayoutAlign="start stretch" #formClient="ngForm" (ngSubmit)="onSubmit()">
 
-                    <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between  start">
+                    <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
                         <mat-form-field fxFlex="45">
-                            <input matInput type="text" class="form-control" value="" placeholder="First Name">
+                            <input matInput type="text" class="form-control" value="" [(ngModel)]="client.firstName" name="firstName" placeholder="First Name">
                         </mat-form-field>
                         <mat-form-field fxFlex="45">
-                            <input matInput type="text" class="form-control" value="" placeholder="Last Name">
+                            <input matInput type="text" class="form-control" value="" [(ngModel)]="client.lastName" name="lastName" placeholder="Last Name">
                         </mat-form-field>
                     </div>
 
                     <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between  start">
 
                         <mat-form-field fxFlex="45">
-                            <input matInput [matDatepicker]="dtbirth" placeholder="Date of Birth">
+                            <input matInput [matDatepicker]="dtbirth" [(ngModel)]="client.birth" name="birth" placeholder="Date of Birth">
                             <mat-datepicker-toggle matSuffix [for]="dtbirth"></mat-datepicker-toggle>
                             <mat-datepicker #dtbirth></mat-datepicker>
                         </mat-form-field>
 
-                        <mat-radio-group fxFlex="45" fxLayout="column" fxLayoutAlign="space-between start">
-                            <mat-radio-button value="Male" checked>Male</mat-radio-button>
+                        <mat-radio-group fxFlex="45" fxLayout="column" fxLayoutAlign="space-between start" [(ngModel)]="client.gender" name="gender">
+                            <mat-radio-button value="Male">Male</mat-radio-button>
                             <mat-radio-button value="Female">Female</mat-radio-button>
                         </mat-radio-group>
 
@@ -40,17 +40,15 @@
                     </div>
                     <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
                         <mat-form-field fxFlex="40">
-                            <input matInput type="text" class="form-control" value="" placeholder="Street">
+                            <input matInput type="text" class="form-control" value="" [(ngModel)]="client.street" name="street" placeholder="Street">
                         </mat-form-field>
                         <mat-form-field fxFlex="30">
-                            <input matInput type="text" class="form-control" value="" placeholder="City">
+                            <input matInput type="text" class="form-control" value="" [(ngModel)]="client.city" name="city" placeholder="City">
                         </mat-form-field>
 
                         <mat-form-field fxFlex="20">
-                            <mat-select placeholder="State">
-                                <mat-option value="Option 1">Option 1</mat-option>
-                                <mat-option value="Option 2">Option 2</mat-option>
-                                <mat-option value="Option 3">Option 3</mat-option>
+                            <mat-select placeholder="State" [(ngModel)]="client.state" name="state">
+                                <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -61,10 +59,10 @@
 
                     <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutGap="20px">
                         <mat-form-field fxFlex="45">
-                            <input matInput type="text" class="form-control" value="" placeholder="Telephone 1 ">
+                            <input matInput type="text" class="form-control" value="" [(ngModel)]="client.phone1" name="phone1" placeholder="Telephone 1 ">
                         </mat-form-field>
                         <mat-form-field fxFlex="45">
-                            <input matInput type="text" class="form-control" value="" placeholder="Telephone 2">
+                            <input matInput type="text" class="form-control" value="" [(ngModel)]="client.phone2" name="phone2" placeholder="Telephone 2">
                         </mat-form-field>
                     </div>
 
