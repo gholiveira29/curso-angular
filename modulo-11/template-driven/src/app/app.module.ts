@@ -7,12 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 import { FormNativeValidatiomComponent } from './form-native-validatiom/form-native-validatiom.component';
+import { FormValidationComponent } from './form-validation/form-validation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateDrivenFormComponent,
-    FormNativeValidatiomComponent
+    FormNativeValidatiomComponent,
+    FormValidationComponent
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ export class FormNativeValidatiomComponent implements OnInit {
 
 
   firstName: string;
-  lastName: string
+  lastName: string;
 
   constructor() { }
 
