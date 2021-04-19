@@ -1,0 +1,41 @@
+<div layout="column" layout-fill>
+    <div align="center" layout="row" layout-align="center center">
+
+        <mat-card class="mat-elevation-z8" flex="80" style="margin-top: 60px; width: 800px;">
+
+            <mat-card-title>New Client</mat-card-title>
+            <mat-card-subtitle>
+            </mat-card-subtitle>
+
+            <mat-card-content fxLayout="column" fxLayoutAlign="space-around stretch">
+
+                <form fxLayout="row wrap" fxLayoutAlign="space-evenly begin" [formGroup]="clientForm">
+                    <mat-form-field fxFlex="45">
+                        <input matInput type="text" value="" formControlName="fistName" placeholder="First Name">
+                    </mat-form-field>
+                    <mat-form-field fxFlex="45">
+                        <input matInput type="text" value="" formControlName="lastName" placeholder="Last Name">
+                    </mat-form-field>
+
+                    <div fxLayout="row wrap" fxLayoutAlign="space-evenly begin" formGroupName="name">
+                        <mat-form-field fxFlex="45">
+                            <input matInput type="text" value="" formControlName="fistName" placeholder="First Name">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="45">
+                            <input matInput type="text" value="" formControlName="lastName" placeholder="Last Name">
+                        </mat-form-field>
+                    </div>
+
+                    <button mat-button color="primary" (click)="Submit()">
+                        <mat-icon>done</mat-icon>Submit
+                    </button>
+                </form>
+
+            </mat-card-content>
+
+            <mat-card-footer>
+            </mat-card-footer>
+        </mat-card>
+
+    </div>
+</div>
