@@ -49,7 +49,7 @@ export class ProductComponent implements OnInit {
           this.notiFy('Product EDIT!')
         },
           (err) => {
-            this.notiFy(err);
+            this.notiFy(err);''
           }
         )
     } else {
