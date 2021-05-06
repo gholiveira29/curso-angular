@@ -45,7 +45,7 @@ export class DepartmentComponent implements OnInit {
       this.clearFields();
       this.notiFy('inserted')
     }, 
-    (err) => console.error(err))
+    (err) => this.notiFy(err))
     }
   }
 

@@ -27,8 +27,8 @@ export class ProductService {
       ).pipe(
         map(([products,departments]) => {
           for(let p of products) {
-            let ids = (p.department as string[]);
-            p.department = ids.map((id) => departments.find(dep => dep._id == id));
+            let ids = (p.departments as string[]);
+            p.departments = ids.map((id) => departments.find(dep => dep._id == id));
           }
           return products;
         })
@@ -40,8 +40,8 @@ export class ProductService {
   }
 
   addProduct(prod: Product): Observable<Product> {
-    let departments = ( prod.department as Department[]).map( d=> d._id);
-    return this.http.post<Product>(this.url, {...prod, departments})
+    // let departments = ( prod.department as Department[]).map( d=> d._id);
+    return this.http.post<Product>(this.url, {...prod})
       .pipe(
         tap((p) => {
           this.productsSubject$.getValue()
@@ -64,7 +64,7 @@ export class ProductService {
   }
   
   updateProduct(prod: Product): Observable<Product> {
-    let departments = ( prod.department as Department[]).map( d=> d._id);
+    let departments = ( prod.departments as Department[]).map( d=> d._id);
     return this.http.patch<Product>(`${this.url}/${prod._id}`, {...prod, departments})
     .pipe(
       tap(() => {
