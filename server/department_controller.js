@@ -1,6 +1,7 @@
 const express = require('express');
 let router = express.Router();
 let Department = require('./department');
+let Product = require('./product');
 
 router.post('/', function(req, res) {
     console.log(req.body);
@@ -24,15 +25,22 @@ router.get('/', function(req, res) {
     });
 })
 
-router.delete('/:id', (req,res) => {
-    let id = req.params.id;
-    Department.deleteOne({_id: id}, (err) => {
-        if(err) {
-            res.status(500).send(err);
+router.delete('/:id', async (req,res) => {
+    try {
+        let id = req.params.id;
+        let prods =  await Product.find({departments: id}).exec();
+        if(prods.length > 0) {
+            res.status(500).send({
+                msg: 'Could not remove this department. You may have to fix its dependencies before.'
+            })
         } else {
+            await Department.deleteOne({_id: id});
             res.status(200).send({});
         }
-    })
+    }
+    catch(err) {
+        res.status(500).send({msg: "Internal error.", error: err});
+    }
 })
 
 router.patch('/:id', (req,res) => {

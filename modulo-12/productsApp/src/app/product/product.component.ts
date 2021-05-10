@@ -1,7 +1,7 @@
 import { DepartmentService } from './../department.service';
 import { Product } from './../product';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ProductService } from '../product.service';
 import { Department } from '../department';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -21,6 +21,8 @@ export class ProductComponent implements OnInit {
     stock: [0, [Validators.required, Validators.min(1)]],
     departments: [[], [Validators.required]]
   });
+
+  @ViewChild('form') form: NgForm;
 
   products: Product [] = [];
   Departments:  Department[] = [];
@@ -51,11 +53,12 @@ export class ProductComponent implements OnInit {
           (err) => {
             this.notiFy(err);''
           }
-        )
-    } else {
-      this.productService.addProduct(data)
-        .subscribe(() => {
-          this.notiFy("Product save!");
+          )
+        } else {
+          this.productService.addProduct(data)
+          .subscribe(() => {
+            this.notiFy("Product save!");
+            this.resetForm();
         },
           (err) => {
             this.notiFy(err);
@@ -83,4 +86,7 @@ export class ProductComponent implements OnInit {
     this.snackBar.open(msg, "OK", {duration: 5000});
   }
 
+  resetForm() {
+    this.form.resetForm();
+  }
 }
