@@ -8,15 +8,9 @@ import { BookComponent } from './book/book.component';
 import { DvdComponent } from './dvd/dvd.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
-const  appRouters: Routes = [
-  {path: 'dvds', component: DvdComponent},
-  {path: 'books', component: BookComponent},
-  {path: '',pathMatch: 'full', redirectTo: 'dvds'},
-  {path: '**', component: PageNotFoundComponent}
 
-];
 
 @NgModule({
   declarations: [
@@ -30,7 +24,7 @@ const  appRouters: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    RouterModule.forRoot(appRouters),
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
