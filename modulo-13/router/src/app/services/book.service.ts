@@ -36,7 +36,7 @@ export class BookService {
     }
   }
 
-  ger(i: number): Observable<Book> {
+  get(i: number): Observable<Book> {
     return this.books$.pipe(
       map(books => (i >= 0 && i < books.length) ? books[i] : null),
       delay(2000)

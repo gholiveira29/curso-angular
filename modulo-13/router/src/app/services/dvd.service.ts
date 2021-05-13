@@ -37,10 +37,10 @@ export class DvdService {
     }
   }
 
-  ger(i: number): Observable<Dvd> {
+  get(i): Observable<Dvd> {
     return this.dvds$.pipe(
       map(dvds => (i >= 0 && i < dvds.length) ? dvds[i] : null),
-      delay(2000)
+      delay(1000)
     )
   }
 }

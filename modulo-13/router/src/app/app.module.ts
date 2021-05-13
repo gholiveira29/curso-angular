@@ -9,6 +9,7 @@ import { DvdComponent } from './dvd/dvd.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { DvdDetailComponent } from './dvd/dvd-detail/dvd-detail.component';
 
 
 
@@ -17,7 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     BookComponent,
     DvdComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DvdDetailComponent
   ],
   imports: [
     BrowserModule,
