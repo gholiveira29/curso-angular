@@ -1,7 +1,8 @@
-<ul *ngIf="dvd$ | async as d; else loading">
-    <li> {{d.title}}</li>
-    <li> {{d.year}} </li>
-    <li> {{d.genre}} </li>
+<p *ngIf="title">Fetching details for DVD: {{title}}</p>
+<ul *ngIf="dvd$ | async as dvd; else loading">
+    <li> {{dvd.title}}</li>
+    <li> {{dvd.year}} </li>
+    <li> {{dvd.genre}} </li>
 </ul>
 
 <ng-template #loading>
