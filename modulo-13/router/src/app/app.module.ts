@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { DvdDetailComponent } from './dvd/dvd-detail/dvd-detail.component';
 import { DvdFormComponent } from './dvd/dvd-form/dvd-form.component';
+import { BookDetailComponent } from './book/book-detail/book-detail.component';
 
 
 
@@ -21,7 +22,8 @@ import { DvdFormComponent } from './dvd/dvd-form/dvd-form.component';
     DvdComponent,
     PageNotFoundComponent,
     DvdDetailComponent,
-    DvdFormComponent
+    DvdFormComponent,
+    BookDetailComponent
   ],
   imports: [
     BrowserModule,

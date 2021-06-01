@@ -1,3 +1,4 @@
+import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { DvdDetailComponent } from './dvd/dvd-detail/dvd-detail.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,7 +11,13 @@ import { DvdFormComponent } from './dvd/dvd-form/dvd-form.component';
 
 const  appRouters: Routes = [
   {path: 'dvds', component: DvdComponent},
-  {path: 'books', component: BookComponent},
+  {path: 'books', 
+  component: BookComponent,
+  children: [
+    {path: ':index', component: BookDetailComponent},
+  ]
+
+},
   {path: 'dvds/new', component: DvdFormComponent},
   {path: 'dvds/:index', component: DvdDetailComponent},
   {path: '',pathMatch: 'full', redirectTo: 'dvds'},
