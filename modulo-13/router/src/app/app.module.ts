@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { DvdDetailComponent } from './dvd/dvd-detail/dvd-detail.component';
 import { DvdFormComponent } from './dvd/dvd-form/dvd-form.component';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
+import { BookAuthorsComponent } from './book/book-authors/book-authors.component';
+import { ElectronicsModule } from './electronics/electronics.module';
 
 
 
@@ -23,7 +25,8 @@ import { BookDetailComponent } from './book/book-detail/book-detail.component';
     PageNotFoundComponent,
     DvdDetailComponent,
     DvdFormComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    BookAuthorsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { BookDetailComponent } from './book/book-detail/book-detail.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule, 
-    AppRoutingModule,
+    AppRoutingModule, ElectronicsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

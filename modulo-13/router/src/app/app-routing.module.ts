@@ -1,3 +1,4 @@
+import { Book } from './models/book';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { DvdDetailComponent } from './dvd/dvd-detail/dvd-detail.component';
 import { NgModule } from '@angular/core';
@@ -7,6 +8,7 @@ import { DvdComponent } from './dvd/dvd.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 import { Routes, RouterModule } from '@angular/router';
 import { DvdFormComponent } from './dvd/dvd-form/dvd-form.component';
+import { BookAuthorsComponent } from './book/book-authors/book-authors.component';
 
 
 const  appRouters: Routes = [
@@ -14,7 +16,12 @@ const  appRouters: Routes = [
   {path: 'books', 
   component: BookComponent,
   children: [
-    {path: ':index', component: BookDetailComponent},
+    {path: ':index', 
+    component: BookDetailComponent,
+    children: [
+      {path: 'authors' , component: BookAuthorsComponent}
+    ]
+  },
   ]
 
 },
