@@ -1,7 +1,12 @@
+import { ElectronicDetailComponent } from './electronic-list/electronic-detail/electronic-detail.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ElectronicListComponent } from './electronic-list/electronic-list.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '', component: ElectronicListComponent},
+  {path: ':index', component: ElectronicDetailComponent},
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

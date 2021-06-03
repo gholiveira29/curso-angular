@@ -1,3 +1,4 @@
+import { MaterialModule } from './../material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -13,7 +14,8 @@ import { ElectronicDetailComponent } from './electronic-list/electronic-detail/e
   ],
   imports: [
     CommonModule,
-    ElectronicsRoutingModule
+    ElectronicsRoutingModule,
+    MaterialModule
   ]
 })
 export class ElectronicsModule { }

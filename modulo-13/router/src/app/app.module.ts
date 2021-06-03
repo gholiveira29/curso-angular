@@ -34,7 +34,8 @@ import { ElectronicsModule } from './electronics/electronics.module';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule, 
-    AppRoutingModule, ElectronicsModule,
+    // ElectronicsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

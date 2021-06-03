@@ -25,6 +25,7 @@ const  appRouters: Routes = [
   ]
 
 },
+  {path: 'electronics', loadChildren: './electronics/electronics.module#ElectronicsModule'},
   {path: 'dvds/new', component: DvdFormComponent},
   {path: 'dvds/:index', component: DvdDetailComponent},
   {path: '',pathMatch: 'full', redirectTo: 'dvds'},
