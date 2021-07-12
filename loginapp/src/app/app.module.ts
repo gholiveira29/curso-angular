@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MainModule } from './main/main.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MainModule } from './main/main.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MainModule
+    MainModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
