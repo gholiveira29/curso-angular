@@ -1,5 +1,9 @@
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from '../user';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +29,10 @@ export class RegisterComponent implements OnInit {
 
 
   constructor( 
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private router: Router
     ) { }
 
     matchingPasswords(group: FormGroup) {
@@ -43,6 +50,22 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  onSubmit() {}
+  onSubmit() {
+    let u: User = {
+      ...this.formRegister.value, 
+      password: this.formRegister.value.password1};
+
+      this.authService.register(u)
+      .subscribe((e) => {
+        this.snackBar.open('Successfuly registered',
+        'OK', {duration: 3000});
+        this.router.navigateByUrl('/auth/login')
+      },
+      (e) => {
+        this.snackBar.open(e.error.message,
+          'OK', {duration: 3000})
+      }
+      )
+  }
 
 }
