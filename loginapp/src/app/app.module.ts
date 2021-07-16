@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,12 @@ import { AuthModule } from './auth/auth.module';
     ReactiveFormsModule,
     HttpClientModule,
     MainModule,
-    AuthModule
+    AuthModule.forRoot(AuthModule)
   ],
-  providers: [],
+  providers: [
+    // MODO QUE SERIA USADO CASO O INTERCEPTOR ESTIVESE DENTRO DO APP MODEL
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
