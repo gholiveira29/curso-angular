@@ -1,4 +1,7 @@
+import { Observable } from 'rxjs';
+import { FilesService } from './../files.service';
 import { Component, OnInit } from '@angular/core';
+import { MyFile } from '../models/myFile.model';
 
 @Component({
   selector: 'app-my-files',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyFilesComponent implements OnInit {
 
-  constructor() { }
+  files: Observable<MyFile[]>;
+
+  constructor( private fileService: FilesService) { }
 
   ngOnInit(): void {
+    this.files = this.fileService.getFiles();
+  }
+
+  getDate(n) {
+    return new Date(n);
+  }
+
+  delet(f: MyFile) {
+    this.fileService.deleteFile(f);
   }
 
 }
