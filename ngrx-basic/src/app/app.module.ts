@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './mterial.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonComponent } from './person/person.component';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './store';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { PersonComponent } from './person/person.component';
     BrowserAnimationsModule,
     MaterialModule, 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot( appReducers )
   ],
   providers: [],
   bootstrap: [AppComponent]
