@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonComponent } from './person/person.component';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,10 @@ import { appReducers } from './store';
     MaterialModule, 
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot( appReducers )
+    StoreModule.forRoot( appReducers ),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

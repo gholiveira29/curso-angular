@@ -9,7 +9,7 @@ import { Person } from '../person';
 export class PersonComponent implements OnInit {
 
   @Input() person: Person;
-  @Output() delete: EventEmitter<Person> = new EventEmitter<Person>();
+  @Output() deletee: EventEmitter<Person> = new EventEmitter<Person>();
   @Output() update: EventEmitter<Person> = new EventEmitter<Person>();
 
   constructor() { }

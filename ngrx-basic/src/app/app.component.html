@@ -2,7 +2,7 @@
   <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="70">
     <app-person *ngFor="let p of people$ | async" 
     [person]="p"
-    (delete)="delete($event)"
+    (deletee)="deletee($event)"
     (update)="update($event)"
     
     ></app-person>
