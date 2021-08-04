@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <h3>People</h3>
+</div>
+<div>
+    <button mat-button color="primary" (click)="generete()">
+        Generete
+    </button>
+</div>
+
+<mat-divider></mat-divider>
+
+<div *ngIf="(people$|async)">
+    <ul>
+        <li *ngFor="let p of (people$ | async)">
+            {{p.name}} {{p.age}} - {{p.company}} - <a href="mailto:{{p.email}}}">e-mail</a>
+        </li>
+    </ul>
+
+</div>

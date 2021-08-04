@@ -1,3 +1,4 @@
+import { PersonComponent } from './person/person.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -13,7 +14,8 @@ import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule,

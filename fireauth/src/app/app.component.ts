@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from './auth/user.model';
+import { User } from './user'
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,8 @@ import { User } from './auth/user.model';
 })
 
 export class AppComponent {
-  user$: Observable<User>;
-  authenticated$: Observable<boolean>;
+  user$: Observable<User> = new Observable<User>();
+  authenticated$: Observable<boolean> = new Observable<boolean>();
+
+  logout() {}
 }
