@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { PersonComponent } from './person/person.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,7 +27,8 @@ import { environment } from 'src/environments/environment';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
