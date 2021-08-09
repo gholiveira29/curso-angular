@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(
       this.loginForm.controls['email'].value,
       this.loginForm.controls['password'].value)
-      .then((e: any) => {
+      .then(() => {
         this.snack.open('Logged in successfully . Welvome!!', 'OK', {duration: 5000});
         this.router.navigateByUrl('/people')
         this.loading = false;

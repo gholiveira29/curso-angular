@@ -3,7 +3,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { from, Observable, of, throwError } from 'rxjs';
 import { User } from '../user';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import * as firebase from "firebase/app";
+import { FirebaseApp } from '@angular/fire';
 
 
 
@@ -55,6 +57,16 @@ export class AuthService {
     return this.afAuth.authState
     .pipe(
       map(u => (u) ? true: false)
+    )
+  }
+
+
+  loginGoogle(): Observable<any> {
+    const provider = new FirebaseApp.GoogleAuthProvider();
+    return from (this.afAuth.signInWithPopup(provider))
+    .pipe(
+      tap((date) => console.log(date)),
+      map(() => null)
     )
   }
 }
