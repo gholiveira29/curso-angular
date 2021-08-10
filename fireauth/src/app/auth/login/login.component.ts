@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
       .then(() => {
         this.snack.open('Logged in successfully . Welvome!!', 'OK', {duration: 5000});
         this.router.navigateByUrl('/people')
-        this.loading = false;
       },
       catchError((err) => throwError(err))
         
@@ -47,7 +46,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginGoogle() {
-
+    this.loading = true;
+    this.authService.loginGoogle()
+    .subscribe((u) => {
+      this.snack.open('Logged in successfully . Welvome!!', 'OK', {duration: 5000});
+      this.router.navigateByUrl('/people');
+    },
+    (err) => {
+      this.snack.open('error inlogged', 'OK', {duration: 5000});
+      this.loading = false;
+    }
+    )
   }
 
 }
