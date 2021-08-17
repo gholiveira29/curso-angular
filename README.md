@@ -1,4 +1,4 @@
-Curso sobre angular , swui se encontram varios projetinhos praticos , alguns envolvendo nodejs, mongo e firebase
+Curso sobre angular , aqui se encontram varios projetinhos praticos , alguns envolvendo nodejs, mongo e firebase
 
 # Rxjs
 
